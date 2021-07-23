@@ -1,24 +1,55 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| name               | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| mission            | string |                           |
 
-Things you may want to cover:
+### Association
+has_many :checks
+has_many :routines
+has_many :Donations
 
-* Ruby version
+## checksテーブル
 
-* System dependencies
+| Column    | Type         | Options                        |
+| --------  | ------------ | ------------------------------ |
+| check_in  | timestamp    |                                |
+| check_out | timestamp    |                                |
+| skip      | integer      |                                |
+| user      | references   | null: false, foreign_key: true |
 
-* Configuration
+### Association
+belongs_to :user
+has_one :donation
+has_one :routine
 
-* Database creation
+## donationsテーブル
 
-* Database initialization
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| check   | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+belongs_to :user
+belongs_to :check
 
-* Services (job queues, cache servers, search engines, etc.)
+## routinesテーブル
 
-* Deployment instructions
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ | 
+| sleep_id     | integer    |                                |
+| bath_id      | integer    |                                |
+| light_id     | integer    |                                |
+| dinner_id    | integer    |                                |
+| caffeine_id  | integer    |                                |
+| alcohol_id   | integer    |                                |
+| user         | references | null: false, foreign_key: true |
+| check        | references | null: false, foreign_key: true |
 
-* ...
+### Association
+belongs_to :user
+belongs_to :check
