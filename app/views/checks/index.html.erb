@@ -1,56 +1,28 @@
 <style>
-  .masthead {
-      height: 750px;
-      background-image: url("https://images.unsplash.com/photo-1499540633125-484965b60031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-  }
+.jumbotron {
+  background-image: url("https://images.unsplash.com/photo-1499540633125-484965b60031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  color: white;
+  height: 550px;
+}
 
-  .navbar {
-      background-color: #006494;
-  }
-
-  .copyright {
-      background-color: #006494;
-  }
 </style>
-<body id="page-top">
-  <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
-      <div class="container">
-          <a class="navbar-brand" href="#page-top">365日坊主</a>
-          <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              Menu
-              <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ms-auto">
-                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">新規登録</a></li>
-                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">ログイン</a></li>
-                  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">ログアウト</a></li>
-              </ul>
-          </div>
-      </div>
-  </nav>
-  <div class="masthead d-flex align-items-end bg-primary text-white text-center">
-      <div class="container d-flex align-items-center flex-column">
-          <h1 class="masthead-heading text-uppercase mb-0">自分を変えたい、あなたに</h1>
-          <div class="divider-custom divider-light">
-          </div>
-          <p class="masthead-subheading font-weight-light mb-0">日々の習慣化のお手伝いをします</p>
-      </div>
+
+<div class="row">
+  <%= render "shared/header" %>
+    <ul>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <li><%= link_to '新規登録', new_user_registration_path %></li>
+    </ul>
+  <div class="jumbotron pt-3" >
+    <h1 class="display-4">自分を変えたい、あなたに。</h1>
+    <p class="lead">日々の習慣化のお手伝いをします。</p>
+    <p></p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">詳しく見る</a>
+    <img class="img-fluid rounded">
   </div>
-  <!-- Copyright Section-->
-  <div class="copyright py-4 text-center text-white fixed-bottom">
-      <div class="container"><small>Copyright &copy; mujin ALL RIGHT RESERVED </small></div>
-  </div>
-  <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="js/scripts.js"></script>
-  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-  <!-- * *                               SB Forms JS                               * *-->
-  <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
+  <%= render "shared/footer" %>
+</div>
