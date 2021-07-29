@@ -1,28 +1,10 @@
-<style>
-.jumbotron {
-  background-image: url("https://images.unsplash.com/photo-1499540633125-484965b60031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  color: white;
-  height: 550px;
-}
-
-</style>
-
 <div class="row">
   <%= render "shared/header" %>
-    <ul>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to 'ログイン', new_user_session_path %></li>
-      <li><%= link_to '新規登録', new_user_registration_path %></li>
-    </ul>
-  <div class="jumbotron pt-3" >
-    <h1 class="display-4">自分を変えたい、あなたに。</h1>
-    <p class="lead">日々の習慣化のお手伝いをします。</p>
-    <p></p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">詳しく見る</a>
-    <img class="img-fluid rounded">
+  <div class="main-content d-flex align-items-end bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <h1 class="content-heading text-uppercase mb-5 display-2">自分を変えたい、あなたに</h1>
+      <h4 class="content-subheading font-weight-light mb-5">日々の習慣化のお手伝いをします</h4>
+    </div>
   </div>
   <%= render "shared/footer" %>
 </div>
