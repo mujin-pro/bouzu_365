@@ -1,0 +1,38 @@
+header{
+  height: 50px;
+  width: 80%;
+  font-size: 25px;
+  background-color: lightgray;
+}
+.contents{
+  width: 500px;
+  
+}
+.top-content{
+  height: 250px;
+  width: 500px;
+  background-color: lightcoral;
+}
+
+.bottom-content{
+  height: 250px;
+  width: 500px;
+  background-color: lightblue;
+}
+
+.list{
+  list-style: none;
+}
+
+.lists{
+  width: 300px;
+}
+
+.featured{
+  background-color: yellow;
+
+footer{
+  height: 50px;
+  width: 80%;
+  background-color:lightgray;
+}
