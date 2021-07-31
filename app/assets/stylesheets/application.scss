@@ -1,0 +1,49 @@
+@import "bootstrap/scss/bootstrap";
+
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+
+body {
+  font-family: "Mplus 1p";
+  }
+
+.header {
+  font-weight: bold;
+  height: 13vh;
+  }
+
+.menu-list {
+  text-decoration: none;
+  color: white;
+  margin: 20px;
+}
+
+.logo {
+  font-size: 30px;
+  }
+
+.main-content {
+  color: white;
+  height: 77vh;
+  background-image: url("https://images.unsplash.com/photo-1499540633125-484965b60031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  }
+
+.content-heading {
+  font-weight: bold;
+}
+
+.footer {
+  height: 10vh;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
