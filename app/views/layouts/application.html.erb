@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
     
     <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
     <!-- CSS only -->
@@ -44,6 +44,127 @@ body {
 
 .content-heading {
   font-weight: bold;
+}
+
+.signup {
+  height: 77vh;
+  text-align: center;
+  position: relative;
+}
+
+.signup-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 50vw;
+  height: 70vh;
+}
+
+.signup-form {
+  margin-top: 7%;
+}
+
+.dummy-alart {
+  font-size: small;
+  opacity: 0;
+}
+
+.name-success {
+  display: none;
+  font-size: small;
+}
+
+.name-error {
+  display: none;
+  font-size: small;
+}
+
+.name-blank {
+  display: none;
+  font-size: small;
+}
+
+.name-nil {
+  display: none;
+  font-size: small;
+}
+
+.email-success {
+  display: none;
+  font-size: small;
+}
+
+.email-error {
+  display: none;
+  font-size: small;
+}
+
+.email-blank {
+  display: none;
+  font-size: small;
+}
+
+.email-nil {
+  display: none;
+  font-size: small;
+}
+
+.password-success {
+  display: none;
+  font-size: small;
+}
+
+.password-error {
+  display: none;
+  font-size: small;
+}
+
+.password-blank {
+  display: none;
+  font-size: small;
+}
+
+.password-nil {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-success {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-error {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-blank {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-nil {
+  display: none;
+  font-size: small;
+}
+
+.mission-success {
+  display: none;
+  font-size: small;
+}
+
+.mission-error {
+  display: none;
+  font-size: small;
+}
+
+.mission-nil {
+  display: none;
+  font-size: small;
 }
 
 .footer {
