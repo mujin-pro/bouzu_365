@@ -18,6 +18,10 @@ body {
   font-family: "Mplus 1p";
   }
 
+li {
+  list-style: none;
+}
+
 .header {
   font-weight: bold;
   height: 13vh;
@@ -36,7 +40,7 @@ body {
 .main-content {
   color: white;
   height: 77vh;
-  background-image: url("https://images.unsplash.com/photo-1499540633125-484965b60031?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
+  background-image: url("<%= asset_path('effort-image.jpg') %>");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -46,13 +50,13 @@ body {
   font-weight: bold;
 }
 
-.signup {
+.userpage {
   height: 77vh;
   text-align: center;
   position: relative;
 }
 
-.signup-content {
+.userpage-content {
   position: absolute;
   top: 0;
   right: 0;
@@ -63,13 +67,16 @@ body {
   height: 70vh;
 }
 
-.signup-form {
-  margin-top: 7%;
+.user-form {
+  margin-top: 5%;
+}
+
+.error-dummy {
+  opacity: 0;
 }
 
 .dummy-alart {
   font-size: small;
-  opacity: 0;
 }
 
 .name-success {
@@ -165,6 +172,10 @@ body {
 .mission-nil {
   display: none;
   font-size: small;
+}
+
+.form-none {
+  display: none !important;
 }
 
 .footer {

@@ -29,7 +29,7 @@ document.onkeyup = e => {
     NameSuccess.setAttribute("style", "display:block");
     NameBlank.setAttribute("style", "display:none !important");
     NameNil.setAttribute("style", "display:none !important");
-  }
+  };
 
   const UserEmail = document.getElementById("user_email"); 
   const EmailDummy = document.getElementById("email-dummy");
@@ -38,7 +38,7 @@ document.onkeyup = e => {
   const EmailBlank = document.getElementById("email-blank");
   const EmailNil = document.getElementById("email-nil");
   const InputEmail = UserEmail.value;
-  const EmailReg = /^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/;
+  const EmailReg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
   
   if (InputEmail.match(/\s/)) {
     UserEmail.setAttribute("class", "form-control is-invalid");
@@ -75,7 +75,7 @@ document.onkeyup = e => {
     EmailError.setAttribute("style", "display:block");
     EmailBlank.setAttribute("style", "display:none !important");
     EmailNil.setAttribute("style", "display:none !important");
-  }
+  };
 
   const UserPassword = document.getElementById("user_password"); 
   const PasswordDummy = document.getElementById("password-dummy");
@@ -121,7 +121,7 @@ document.onkeyup = e => {
     PasswordError.setAttribute("style", "display:block");
     PasswordBlank.setAttribute("style", "display:none !important");
     PasswordNil.setAttribute("style", "display:none !important");
-  }
+  };
 
   const UserPasswordConfirmation = document.getElementById("user_password_confirmation"); 
   const PasswordConfirmationDummy = document.getElementById("password-confirmation-dummy");
@@ -167,7 +167,7 @@ document.onkeyup = e => {
     PasswordConfirmationError.setAttribute("style", "display:block");
     PasswordConfirmationBlank.setAttribute("style", "display:none !important");
     PasswordConfirmationNil.setAttribute("style", "display:none !important");
-  }
+  };
 
   const UserMission = document.getElementById("user_mission"); 
   const MissionDummy = document.getElementById("mission-dummy");
@@ -198,8 +198,23 @@ document.onkeyup = e => {
     MissionSuccess.setAttribute("style", "display:block");
     MissionError.setAttribute("style", "display:none !important");
     MissionNil.setAttribute("style", "display:none !important");
-  }
+  };
 };
 
-// 正規表現を半角英数字にして、6文字のバリデーションをつける
-// 全てに注釈がついた時の高さをどうするか
+function LogoDelete () {
+  const ErrorExplanation = document.getElementById("error_explanation");
+  const ErrorLogo = document.getElementById("error-logo");
+  const ErrorMessage = document.getElementById("error-message");
+  const ErrorMessageContents = ErrorMessage.innerHTML;
+  const ErrorDummy = document.getElementById("error-dummy")
+
+  if (ErrorExplanation) {
+    ErrorLogo.setAttribute("style", "display: none;");
+  };
+
+  if (ErrorMessageContents) {
+    ErrorDummy.setAttribute("style", "display: none;");
+  };
+};
+
+window.addEventListener('load', LogoDelete)
