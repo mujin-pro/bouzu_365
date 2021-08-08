@@ -206,21 +206,14 @@ function LogoDelete () {
   const ErrorLogo = document.getElementById("error-logo");
   const ErrorMessage = document.getElementById("error-message");
   const ErrorMessageContents = ErrorMessage.innerHTML;
-  const ErrorDummy = document.getElementById("error-dummy");
-  const SignInAlert = document.getElementById("alert");
-  const AlertMessage = SignInAlert.innerHTML;
+  const ErrorDummy = document.getElementById("error-dummy")
 
   if (ErrorExplanation) {
-    ErrorLogo.setAttribute("style", "display: none");
+    ErrorLogo.setAttribute("style", "display: none;");
   };
 
   if (ErrorMessageContents) {
-    ErrorDummy.setAttribute("style", "display: none !important");
-  };
-
-  if (AlertMessage) {
-    ErrorDummy.setAttribute("style", "display: none !important");
-    SignInAlert.setAttribute("style", "display: block !important");
+    ErrorDummy.setAttribute("style", "display: none;");
   };
 };
 

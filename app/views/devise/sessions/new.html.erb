@@ -1,10 +1,9 @@
 <div class="userpage">
   <div class="userpage-content">
     <h2 class="userpage-logo">ログイン</h2>
-    <li class="error-dummy mt-3", id="error-dummy">各フォームの入力をお願いします<li>
-    <p class="alert" id="alert"><%= alert %></p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%# <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="user-form">
         <div class="row mb-3 form-none">
