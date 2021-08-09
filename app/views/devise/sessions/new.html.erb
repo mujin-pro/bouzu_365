@@ -1,9 +1,11 @@
 <div class="userpage">
   <div class="userpage-content">
     <h2 class="userpage-logo">ログイン</h2>
+    <p class="alert mb-0" id="alert-devise"><%= alert %></p>
+    <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
+
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%# <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="user-form">
         <div class="row mb-3 form-none">

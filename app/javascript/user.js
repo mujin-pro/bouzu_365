@@ -201,20 +201,26 @@ document.onkeyup = e => {
   };
 };
 
-function LogoDelete () {
-  const ErrorExplanation = document.getElementById("error_explanation");
-  const ErrorLogo = document.getElementById("error-logo");
+function SignUpError () {
   const ErrorMessage = document.getElementById("error-message");
-  const ErrorMessageContents = ErrorMessage.innerHTML;
-  const ErrorDummy = document.getElementById("error-dummy")
+  const ErrorMessageContent = ErrorMessage.innerHTML;
+  const ErrorDummy = document.getElementById("error-dummy");
 
-  if (ErrorExplanation) {
-    ErrorLogo.setAttribute("style", "display: none;");
-  };
-
-  if (ErrorMessageContents) {
+  if (ErrorMessageContent) {
     ErrorDummy.setAttribute("style", "display: none;");
   };
 };
 
-window.addEventListener('load', LogoDelete)
+function SignInError () {
+  const AlertDevise = document.getElementById("alert-devise");
+  const AlertDeviseContent = AlertDevise.innerHTML;
+  const AlertSelf = document.getElementById("alert-self")
+
+  if (AlertDeviseContent) {
+    AlertDevise.setAttribute("style", "display: none;")
+    AlertSelf.setAttribute("style", "display: block;")
+  }
+};
+
+window.addEventListener('load', SignUpError)
+window.addEventListener('load', SignInError)
