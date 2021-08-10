@@ -5,6 +5,9 @@
         <% if message == "メールアドレスは既に使用されています。" %>
           <li class="error-message text-danger mt-3" id="error-message"><%= message %></li>
         <% end %>
+        <% if message == "パスワードは既に使用されています。" %>
+          <li class="error-message text-danger mt-3" id="error-message"><%= message %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

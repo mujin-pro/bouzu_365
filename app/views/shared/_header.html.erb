@@ -3,6 +3,7 @@
     <a class="logo navbar-brand text-light" href="/">365日坊主</a>
     <ul class="list-unstyled list-group list-group-horizontal">
       <% if user_signed_in? %>
+        <li><%= link_to 'ユーザー編集', edit_user_registration_path, class: 'menu-list' %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'menu-list' %></li>
       <% else %>
         <li><%= link_to '新規登録', new_user_registration_path, class: 'menu-list' %></li>

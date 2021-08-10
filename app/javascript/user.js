@@ -4,7 +4,9 @@ document.onkeyup = e => {
   const NameSuccess = document.getElementById("name-success");
   const NameBlank = document.getElementById("name-blank");
   const NameNil = document.getElementById("name-nil");
+  const NameLength = document.getElementById("name-length");
   const InputName = UserName.value;
+  const InputNameLength = InputName.length
   
   if (InputName.match(/\s/)) {
     UserName.setAttribute("class", "form-control is-invalid")
@@ -13,6 +15,7 @@ document.onkeyup = e => {
     NameSuccess.setAttribute("style", "display:none !important");
     NameBlank.setAttribute("style", "display:block");
     NameNil.setAttribute("style", "display:none !important");
+    NameLength.setAttribute("style", "display:none !important");
   }
   else if (InputName == '') {
     UserName.setAttribute("class", "form-control");
@@ -21,6 +24,16 @@ document.onkeyup = e => {
     NameSuccess.setAttribute("style", "display:none !important");
     NameBlank.setAttribute("style", "display:none !important");
     NameNil.setAttribute("style", "display:block");
+    NameLength.setAttribute("style", "display:none !important");
+  }
+  else if (InputNameLength > 10) {
+    UserName.setAttribute("class", "form-control is-invalid");
+    UserName.setAttribute("style", "red");
+    NameDummy.setAttribute("style", "display:none !important");
+    NameSuccess.setAttribute("style", "display:none !important");
+    NameBlank.setAttribute("style", "display:none !important");
+    NameNil.setAttribute("style", "display:none !important");
+    NameLength.setAttribute("style", "display:block !important");
   }
   else {
     UserName.setAttribute("class", "form-control is-valid");
@@ -29,6 +42,7 @@ document.onkeyup = e => {
     NameSuccess.setAttribute("style", "display:block");
     NameBlank.setAttribute("style", "display:none !important");
     NameNil.setAttribute("style", "display:none !important");
+    NameLength.setAttribute("style", "display:none !important");
   };
 
   const UserEmail = document.getElementById("user_email"); 
@@ -198,6 +212,52 @@ document.onkeyup = e => {
     MissionSuccess.setAttribute("style", "display:block");
     MissionError.setAttribute("style", "display:none !important");
     MissionNil.setAttribute("style", "display:none !important");
+  };
+
+  const UserCurrentPassword = document.getElementById("user_current_password"); 
+  const CurrentPasswordDummy = document.getElementById("current-password-dummy");
+  const CurrentPasswordSuccess = document.getElementById("current-password-success");
+  const CurrentPasswordError = document.getElementById("current-password-error");
+  const CurrentPasswordBlank = document.getElementById("current-password-blank");
+  const CurrentPasswordNil = document.getElementById("current-password-nil");
+  const InputCurrentPassword = UserCurrentPassword.value;
+  const CurrentPasswordReg = /^([a-zA-Z0-9]{6,})$/;
+  
+  if (InputCurrentPassword.match(/\s/)) {
+    UserCurrentPassword.setAttribute("class", "form-control is-invalid");
+    UserCurrentPassword.setAttribute("style", "red");
+    CurrentPasswordDummy.setAttribute("style", "display:none !important");
+    CurrentPasswordSuccess.setAttribute("style", "display:none !important");
+    CurrentPasswordError.setAttribute("style", "display:none !important");
+    CurrentPasswordBlank.setAttribute("style", "display:block");
+    CurrentPasswordNil.setAttribute("style", "display:none !important");
+  }
+  else if (InputCurrentPassword == '') {
+    UserCurrentPassword.setAttribute("class", "form-control");
+    UserCurrentPassword.setAttribute("style", "blue");
+    CurrentPasswordDummy.setAttribute("style", "display:none !important");
+    CurrentPasswordSuccess.setAttribute("style", "display:none !important");
+    CurrentPasswordError.setAttribute("style", "display:none !important");
+    CurrentPasswordBlank.setAttribute("style", "display:none !important");
+    CurrentPasswordNil.setAttribute("style", "display:block");
+  }
+  else if (CurrentPasswordReg.test(InputCurrentPassword)) {
+    UserCurrentPassword.setAttribute("class", "form-control is-valid");
+    UserCurrentPassword.setAttribute("style", "green");
+    CurrentPasswordDummy.setAttribute("style", "display:none !important");
+    CurrentPasswordSuccess.setAttribute("style", "display:block");
+    CurrentPasswordError.setAttribute("style", "display:none !important");
+    CurrentPasswordBlank.setAttribute("style", "display:none !important");
+    CurrentPasswordNil.setAttribute("style", "display:none !important");
+    }
+  else {
+    UserCurrentPassword.setAttribute("class", "form-control is-invalid");
+    UserCurrentPassword.setAttribute("style", "red");
+    CurrentPasswordDummy.setAttribute("style", "display:none !important");
+    CurrentPasswordSuccess.setAttribute("style", "display:none !important");
+    CurrentPasswordError.setAttribute("style", "display:block");
+    CurrentPasswordBlank.setAttribute("style", "display:none !important");
+    CurrentPasswordNil.setAttribute("style", "display:none !important");
   };
 };
 
