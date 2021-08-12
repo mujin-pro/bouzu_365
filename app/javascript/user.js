@@ -26,7 +26,7 @@ document.onkeyup = e => {
     NameNil.setAttribute("style", "display:block");
     NameLength.setAttribute("style", "display:none !important");
   }
-  else if (InputNameLength > 10) {
+  else if (InputNameLength > 20) {
     UserName.setAttribute("class", "form-control is-invalid");
     UserName.setAttribute("style", "red");
     NameDummy.setAttribute("style", "display:none !important");
