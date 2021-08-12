@@ -1,15 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html lang='ja'>
   <head>
     <title>Bouzu365</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   </head>
 
+<style>
+body {
+  font-family: "Mplus 1p";
+  }
+
+li {
+  list-style: none;
+}
+
+.header {
+  font-weight: bold;
+  height: 9vh;
+  }
+
+.menu-list {
+  text-decoration: none;
+  color: white;
+  margin: 20px;
+}
+
+.logo {
+  font-size: 30px;
+  }
+
+.main-content {
+  color: white;
+  height: 85vh;
+  background-image: url("<%= asset_path('effort-image.jpg') %>");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  }
+
+.content-heading {
+  font-weight: bold;
+}
+
+.userpage {
+  height: 83vh;
+  text-align: center;
+  position: relative;
+}
+
+.userpage-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 55vw;
+  height: 80vh;
+}
+
+.user-form {
+  margin-top: 5%;
+}
+
+.error-dummy {
+  opacity: 0;
+}
+
+.dummy-alart {
+  font-size: small;
+}
+
+.name-success {
+  display: none;
+  font-size: small;
+}
+
+.name-error {
+  display: none;
+  font-size: small;
+}
+
+.name-blank {
+  display: none;
+  font-size: small;
+}
+
+.name-nil {
+  display: none;
+  font-size: small;
+}
+
+.name-length {
+  display: none;
+  font-size: small;
+}
+
+.email-success {
+  display: none;
+  font-size: small;
+}
+
+.email-error {
+  display: none;
+  font-size: small;
+}
+
+.email-blank {
+  display: none;
+  font-size: small;
+}
+
+.email-nil {
+  display: none;
+  font-size: small;
+}
+
+.password-success {
+  display: none;
+  font-size: small;
+}
+
+.password-error {
+  display: none;
+  font-size: small;
+}
+
+.password-blank {
+  display: none;
+  font-size: small;
+}
+
+.password-nil {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-success {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-error {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-blank {
+  display: none;
+  font-size: small;
+}
+
+.password-confirmation-nil {
+  display: none;
+  font-size: small;
+}
+
+.mission-success {
+  display: none;
+  font-size: small;
+}
+
+.mission-error {
+  display: none;
+  font-size: small;
+}
+
+.mission-nil {
+  display: none;
+  font-size: small;
+}
+
+.current-password-success {
+  display: none;
+  font-size: small;
+}
+
+.current-password-error {
+  display: none;
+  font-size: small;
+}
+
+.current-password-blank {
+  display: none;
+  font-size: small;
+}
+
+.current-password-nil {
+  display: none;
+  font-size: small;
+}
+
+.form-none {
+  display: none !important;
+}
+
+.alert-self {
+  display: none;
+  color: red;
+}
+
+.footer {
+  height: 6vh;
+}
+</style>
+
   <body>
-    <%= yield %>
+    <div class="row">
+      <%= render "shared/header" %>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+      <%= render "shared/footer" %>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>
