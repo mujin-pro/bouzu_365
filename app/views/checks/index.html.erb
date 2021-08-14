@@ -1,26 +1,6 @@
-<% if user_signed_in? %>
-  <div class="main-content2 d-flex align-items-top text-center">
-    <div class="container d-flex align-items-center flex-column">
-      <h3 class="content2-heading text-uppercase mt-3 mb-5 display-4"><%= current_user.name %>さん</h3>
-      <h3 class="content2-subheading font-weight-light mb-2">ミッション</h3>
-      <h4 class="content2-subheading font-weight-light mb-5"><%= current_user.mission %></h4>
-      <%= form_with url:checks_path, id: 'check-in-form', class: 'check-in-form',local: true do |f| %>
-        <div class='check-in-wrap'>
-        
-          <%= f.submit "チェック" ,class:"check-in-button btn btn-primary", id:"check-in-button" %>
-        </div>
-      <% end %>
-    </div>
+<div class="main-content d-flex align-items-end text-center">
+  <div class="container d-flex align-items-center flex-column">
+    <h1 class="content-heading text-uppercase mb-5 display-2">自分を変えたい、あなたに</h1>
+    <h3 class="content-subheading font-weight-light mb-5">日々の習慣化のお手伝いをします</h3>
   </div>
-<% else %>
-  <div class="main-content d-flex align-items-end text-center">
-    <div class="container d-flex align-items-center flex-column">
-      <h1 class="content-heading text-uppercase mb-5 display-2">自分を変えたい、あなたに</h1>
-      <h3 class="content-subheading font-weight-light mb-5">日々の習慣化のお手伝いをします</h3>
-    </div>
-  </div>
-<% end %>
-
-
-
-
+</div>
