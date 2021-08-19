@@ -1,6 +1,37 @@
-<div class="main-content d-flex align-items-end text-center">
-  <div class="container d-flex align-items-center flex-column">
-    <h1 class="content-heading text-uppercase mb-5 display-2">自分を変えたい、あなたに</h1>
-    <h3 class="content-subheading font-weight-light mb-5">日々の習慣化のお手伝いをします</h3>
+<% if user_signed_in? %>
+  <div class="main-content2 d-flex align-items-top text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <h3 class="content2-heading text-uppercase mt-3 mb-5 display-4"><%= current_user.name %>さん</h3>
+      <h3 class="content2-subheading font-weight-light mb-2">ミッション</h3>
+      <h4 class="content2-subheading font-weight-light mb-5"><%= current_user.mission %></h4>
+      <%= form_with url:checks_path, id: 'check-in-form', class: 'check-in-form',local: true do |f| %>
+        <div class="check-in-wrap">
+          <%= f.submit "チェックイン" ,class:"check-in-button btn btn-primary bg-gradient mt-5 mb-3", id:"check-in-button" %>
+        </div>
+      <% end %>
+      <div class="check-in-time mb-5">
+        <%= @check.created_at.strftime("%-m月%-d日 %-H時%M分") %>
+      </div>
+      
+      <%= form_with url:completes_path, id: 'check-out-form', class: 'check-out-form',local: true do |f| %>
+        <div class="check-out-wrap">
+          <%= f.submit "チェックアウト" ,class:"check-out-button btn btn-primary bg-gradient mt-5 mb-3", id:"check-out-button" %>
+        </div>
+      <% end %>
+      <div class="check-out-time mb-5">
+        <%= @complete.created_at.strftime("%-m月%-d日 %-H時%M分") %>
+      </div>
+      <div class="bg-primary">
+        <%= @check1.created_at.strftime("%-m月%-d日 %-H時%M分") %><%= "テストユーザー1さんがチェックインしました"%><br/>
+        <%= @check2.created_at.strftime("%-m月%-d日 %-H時%M分") %><%= "テストユーザー2さんがチェックインしました"%>
+      </div>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="main-content d-flex align-items-end text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <h1 class="content-heading text-uppercase mb-5 display-2">自分を変えたい、あなたに</h1>
+      <h3 class="content-subheading font-weight-light mb-5">日々の習慣化のお手伝いをします</h3>
+    </div>
+  </div>
+<% end %>
