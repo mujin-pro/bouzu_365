@@ -6,10 +6,20 @@ class ChecksController < ApplicationController
     @complete = Complete.last
   end
 
-  def create
+  def new
     @check = Check.new
+  end
+
+  def create
+    @check = Check.create(check_params)
     if @check.save
       redirect_to root_path
     end
+  end
+
+  private
+
+  def check_params
+    params.require(:check).permit(:activities).merge(user_id: current_user.id)
   end
 end
