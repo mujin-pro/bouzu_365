@@ -6,15 +6,45 @@
       <h4 class="content2-subheading font-weight-light mb-5"><%= current_user.mission %></h4>
       
       <div class="mb-2">
-        <%= @check.created_at.strftime("%-m月%-d日 %-H時%M分") %>(チェックイン時間を表示するエリアです)
+        <%= @check.created_at.strftime("%-m月%-d日 %-H時%M分") %>(チェックイン時間を表示するエリア)
       </div>
 
       <div class="mb-5">
-        <%= @complete.created_at.strftime("%-m月%-d日 %-H時%M分") %>(チェックアウト時間を表示させるエリアです)
+        <%= @complete.created_at.strftime("%-m月%-d日 %-H時%M分") %>(チェックアウト時間を表示させるエリア)
       </div>
 
       <div>
-        タイムラインを表示させるエリアです
+        （タイムラインを表示させるエリア）<br/>
+        <% if @check1.present? %>
+          <%= @check1.user.name %>さんが<%= @check1.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check2.present? %>
+          <%= @check2.user.name %>さんが<%= @check2.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check3.present? %>
+          <%= @check3.user.name %>さんが<%= @check3.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check4.present? %>
+          <%= @check4.user.name %>さんが<%= @check4.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check5.present? %>
+          <%= @check5.user.name %>さんが<%= @check5.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check6.present? %>
+          <%= @check6.user.name %>さんが<%= @check6.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check7.present? %>
+          <%= @check7.user.name %>さんが<%= @check7.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check8.present? %>
+          <%= @check8.user.name %>さんが<%= @check8.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check9.present? %>
+          <%= @check9.user.name %>さんが<%= @check9.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
+        <% if @check10.present? %>
+          <%= @check10.user.name %>さんが<%= @check10.created_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+        <% end %>
       </div>
       
     </div>
