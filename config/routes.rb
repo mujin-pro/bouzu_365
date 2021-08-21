@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'checks#index' 
   resources :checks, only: [:index, :create, :new]
   resources :completes, only: [:index, :create, :new]
+  resources :calendar, only: [:index]
 end

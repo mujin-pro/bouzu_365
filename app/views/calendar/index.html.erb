@@ -1,0 +1,11 @@
+
+
+<%= month_calendar events: @checks do |date, checks| %>
+  <%= date.day %>
+
+  <% checks.each do |check| %>
+    <div>
+      <%= link_to check.created_at, check %>
+    </div>
+  <% end %>
+<% end %>
