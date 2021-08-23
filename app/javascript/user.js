@@ -282,5 +282,29 @@ function SignInError () {
   }
 };
 
+function CheckInModal () {
+  const CheckInButton = document.getElementById("check-in-button");
+  const CheckInModalButton = document.getElementById("check-in-modal-button"); 
+  CheckInButton.addEventListener('click', function() {
+    CheckInModalButton.click();
+    setTimeout(function(){
+      window.location.href = 'http://localhost:3000/';
+    }, 3*1000);
+  });
+};
+
+function CheckOutModal () {
+  const CheckOutButton = document.getElementById("check-out-button");
+  const CheckOutModalButton = document.getElementById("check-out-modal-button"); 
+  CheckOutButton.addEventListener('click', function() {
+    CheckOutModalButton.click();
+    setTimeout(function(){
+      window.location.href = 'http://localhost:3000/';
+    }, 3*1000);
+  });
+};
+
 window.addEventListener('load', SignUpError)
 window.addEventListener('load', SignInError)
+window.addEventListener('load', CheckInModal)
+window.addEventListener('load', CheckOutModal)

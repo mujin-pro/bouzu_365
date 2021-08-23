@@ -1,6 +1,10 @@
 class ChecksController < ApplicationController
   def index
-    @check = Check.last
+    if user_signed_in? && Check.last.present?
+      @checks = Check.where(user_id: current_user.id)
+      @check = @checks.last
+    end
+
     @check1 = Check.all.order(id: "DESC")[0]
     @check2 = Check.all.order(id: "DESC")[1]
     @check3 = Check.all.order(id: "DESC")[2]
@@ -12,7 +16,10 @@ class ChecksController < ApplicationController
     @check9 = Check.all.order(id: "DESC")[8]
     @check10 = Check.all.order(id: "DESC")[9]
 
-    @complete = Complete.last
+    if user_signed_in? && Complete.last.present?
+      @completes = Complete.where(user_id: current_user.id)
+      @complete = Complete.last
+    end
   end
 
   def new
@@ -21,7 +28,26 @@ class ChecksController < ApplicationController
 
   def create
     @check = Check.create(check_params)
-    if @check.save
+    @check.save
+  end
+
+  def edit
+    @check = Check.last
+  end
+
+  def update
+    @check = Check.last
+    if @check.updated_at.strftime("%-m月%-d日") == Date.today.strftime("%-m月%-d日")
+      if @check.update(check_params)
+        redirect_to root_path
+      end
+    end
+  end
+
+  def destroy
+    @checks = Check.where(user_id: current_user.id)
+    @check = @checks.last
+    if @check.destroy
       redirect_to root_path
     end
   end

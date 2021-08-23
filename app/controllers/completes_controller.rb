@@ -11,6 +11,27 @@ class CompletesController < ApplicationController
     end
   end
   
+  def edit
+    @complete = Complete.last
+  end
+
+  def update
+    @complete = Complete.last
+    if @complete.updated_at.strftime("%-m月%-d日") == Date.today.strftime("%-m月%-d日")
+      if @complete.update(complete_params)
+        redirect_to root_path
+      end
+    end
+  end
+
+  def destroy
+    @completes = Complete.where(user_id: current_user.id)
+    @complete = @completes.last
+    if @complete.destroy
+      redirect_to root_path
+    end
+  end
+
   private
 
   def complete_params

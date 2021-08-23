@@ -1,11 +1,11 @@
 <div class="userpage">
   <div class="userpage-content">
-    <h2 class="userpage-logo">チェックアウト</h2>
+    <h2 class="userpage-logo">チェックアウト（上書き修正）</h2>
     <p class="alert mb-0" id="alert-devise"><%= alert %></p>
     <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
 
 
-    <%= form_with model:@complete, id: 'check-in-form', class: 'check-in-form',local: true do |f| %>
+    <%= form_with model:@complete, url:complete_path(@complete), method: :patch, id: 'check-out-form', class: 'check-out-form',local: true do |f| %>
 
       <div class="user-form">
         <div class="row mb-3">
@@ -20,29 +20,9 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "チェックアウト" ,class:"check-out-button form-control btn-primary bg-gradient mt-4", id:"check-out-button" %>
+          <%= f.submit "チェックアウト（上書き修正）" ,class:"check-out-button form-control btn-primary bg-gradient mt-4", id:"check-out-button" %>
         </div>
       </div>
     <% end %>
-    <button type="button" class="btn modal-button btn-primary mt-5", id="check-out-modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      モーダル用ボタン
-    </button>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">チェックアウト完了</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            活動終了、お疲れ様でした！
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
