@@ -3,6 +3,17 @@ class ChecksController < ApplicationController
     if user_signed_in? && Check.last.present?
       @checks = Check.where(user_id: current_user.id)
       @check = @checks.last
+      @check_user1 = @checks.order(id: "DESC")[0]
+      @check_user2 = @checks.order(id: "DESC")[1]
+      @check_user3 = @checks.order(id: "DESC")[2]
+      @check_user4 = @checks.order(id: "DESC")[3]
+      @check_user5 = @checks.order(id: "DESC")[4]
+      @check_user6 = @checks.order(id: "DESC")[5]
+      @check_user7 = @checks.order(id: "DESC")[6]
+      @check_user8 = @checks.order(id: "DESC")[7]
+      @check_user9 = @checks.order(id: "DESC")[8]
+      @check_user10 = @checks.order(id: "DESC")[9]
+
     end
 
     @check1 = Check.all.order(id: "DESC")[0]
@@ -18,7 +29,7 @@ class ChecksController < ApplicationController
 
     if user_signed_in? && Complete.last.present?
       @completes = Complete.where(user_id: current_user.id)
-      @complete = Complete.last
+      @complete = @completes.last
     end
   end
 
@@ -28,7 +39,8 @@ class ChecksController < ApplicationController
 
   def create
     @check = Check.create(check_params)
-    @check.save
+    render json:{ post: @check }
+    # @check.save
   end
 
   def edit

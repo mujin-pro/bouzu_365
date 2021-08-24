@@ -6,9 +6,8 @@ class CompletesController < ApplicationController
 
   def create
     @complete = Complete.create(complete_params)
-    if @complete.save
-      redirect_to root_path
-    end
+    render json:{ post: @complete }
+    # @complete.save
   end
   
   def edit

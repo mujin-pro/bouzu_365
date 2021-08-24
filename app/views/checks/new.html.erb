@@ -11,7 +11,7 @@
         <div class="row mb-3">
           <%= f.label :活動内容, :class => "col-sm-4 col-form-label" %>
             <div class="col-sm-8">
-              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50" %>
+              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"check-in-activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50" %>
               <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
               <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
               <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
@@ -33,14 +33,14 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">チェックイン完了</h5>
+            <h5 class="modal-title" id="exampleModalLabel">チェックイン完了（トップページに戻ります）</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             今日も活動開始ですね！素晴らしいです！
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href='/'">Close</button>
           </div>
         </div>
       </div>
