@@ -1,13 +1,20 @@
 <% if user_signed_in? %>
   <div class="index-content d-flex">
-    <div class="index-user-content container mt-3">
-      <h3 class="content2-heading text-uppercase mb-5 display-4"><%= current_user.name %>さん</h3>
-      <h3 class="content2-subheading font-weight-light mb-2">ミッション</h3>
-      <h4 class="content2-subheading font-weight-light mb-5"><%= current_user.mission %></h4>
-      
-      <div class="mb-2">
+    <div class="index-user-content container">
+      <div class="mt-5">
         <div class="border rounded text-center">
-          <div class="check-content border-bottom pt-3 pb-3 bg-gradient text-white">
+          <div class="check-content border-bottom pt-3 pb-3 bg-primary bg-gradient text-white">
+            <h5><%= current_user.name %>さんのミッション</h5>
+          </div>
+          <div class="mt-3 mb-3">
+            <h4 class="content2-subheading font-weight-light mb-5"><%= current_user.mission %></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div class="border rounded text-center">
+          <div class="check-content border-bottom pt-3 pb-3 bg-primary bg-gradient text-white">
             <h5>チェックイン</h5>
           </div>
           <div class="mt-3 mb-3">
@@ -29,9 +36,9 @@
         </div>
       </div>
 
-      <div class="mb-2">
+      <div class="mt-4">
         <div class="border rounded text-center">
-          <div class="check-content border-bottom pt-3 pb-3 bg-gradient text-white">
+          <div class="check-content border-bottom pt-3 pb-3 bg-primary bg-gradient text-white">
             <h5>チェックアウト</h5>
           </div>
           <div class="mt-3 mb-3">
@@ -53,9 +60,9 @@
         </div>
       </div>
     </div>
-    <div class="index-timeline-content container mt-3">
+    <div class="timeline-content container mt-5 rounded text-center">
       <nav>
-        <div class="mb-3">タイムライン</div>
+        <div class="mb-3 border-bottom pt-3 pb-3 bg-primary bg-gradient text-white"><h5>タイムライン</h5></div>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">あなた</a>
           <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">全ユーザー</a>
@@ -63,68 +70,108 @@
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <% if @check_user1.present? %>
-            <%= @check_user1.user.name %>さんが<%= @check_user1.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user2.present? %>
-            <%= @check_user2.user.name %>さんが<%= @check_user2.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user3.present? %>
-            <%= @check_user3.user.name %>さんが<%= @check_user3.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user4.present? %>
-            <%= @check_user4.user.name %>さんが<%= @check_user4.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user5.present? %>
-            <%= @check_user5.user.name %>さんが<%= @check_user5.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user6.present? %>
-            <%= @check_user6.user.name %>さんが<%= @check_user6.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user7.present? %>
-            <%= @check_user7.user.name %>さんが<%= @check_user7.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user8.present? %>
-            <%= @check_user8.user.name %>さんが<%= @check_user8.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user9.present? %>
-            <%= @check_user9.user.name %>さんが<%= @check_user9.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check_user10.present? %>
-            <%= @check_user10.user.name %>さんが<%= @check_user10.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
+          <div class="time-line border-bottom">
+            <% if @check_user1.present? %>
+              <%= @check_user1.user.name %>さんが<%= @check_user1.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user2.present? %>
+              <%= @check_user2.user.name %>さんが<%= @check_user2.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user3.present? %>
+              <%= @check_user3.user.name %>さんが<%= @check_user3.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user4.present? %>
+              <%= @check_user4.user.name %>さんが<%= @check_user4.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user5.present? %>
+              <%= @check_user5.user.name %>さんが<%= @check_user5.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user6.present? %>
+              <%= @check_user6.user.name %>さんが<%= @check_user6.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user7.present? %>
+              <%= @check_user7.user.name %>さんが<%= @check_user7.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user8.present? %>
+              <%= @check_user8.user.name %>さんが<%= @check_user8.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user9.present? %>
+              <%= @check_user9.user.name %>さんが<%= @check_user9.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check_user10.present? %>
+              <%= @check_user10.user.name %>さんが<%= @check_user10.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <% if @check1.present? %>
-            <%= @check1.user.name %>さんが<%= @check1.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check2.present? %>
-            <%= @check2.user.name %>さんが<%= @check2.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check3.present? %>
-            <%= @check3.user.name %>さんが<%= @check3.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check4.present? %>
-            <%= @check4.user.name %>さんが<%= @check4.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check5.present? %>
-            <%= @check5.user.name %>さんが<%= @check5.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check6.present? %>
-            <%= @check6.user.name %>さんが<%= @check6.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check7.present? %>
-            <%= @check7.user.name %>さんが<%= @check7.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check8.present? %>
-            <%= @check8.user.name %>さんが<%= @check8.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check9.present? %>
-            <%= @check9.user.name %>さんが<%= @check9.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
-          <% if @check10.present? %>
-            <%= @check10.user.name %>さんが<%= @check10.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
-          <% end %>
+          <div class="time-line border-bottom">
+            <% if @check1.present? %>
+              <%= @check1.user.name %>さんが<%= @check1.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check2.present? %>
+              <%= @check2.user.name %>さんが<%= @check2.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check3.present? %>
+              <%= @check3.user.name %>さんが<%= @check3.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check4.present? %>
+              <%= @check4.user.name %>さんが<%= @check4.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check5.present? %>
+              <%= @check5.user.name %>さんが<%= @check5.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check6.present? %>
+              <%= @check6.user.name %>さんが<%= @check6.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check7.present? %>
+              <%= @check7.user.name %>さんが<%= @check7.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check8.present? %>
+              <%= @check8.user.name %>さんが<%= @check8.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check9.present? %>
+              <%= @check9.user.name %>さんが<%= @check9.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
+          <div class="time-line border-bottom">
+            <% if @check10.present? %>
+              <%= @check10.user.name %>さんが<%= @check10.updated_at.strftime("%-m月%-d日 %-H時%M分") %>にチェックインしました。<br/>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
