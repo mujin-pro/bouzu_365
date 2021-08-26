@@ -6,7 +6,7 @@
       <% if check.user_id == current_user.id %>
         <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") && check.present? %>
           <div>
-            <%= "チェックイン：" %><%= check.updated_at.strftime("%-H時%M分") %><br/>
+            <%= "イン：" %><%= check.updated_at.strftime("%-H時%M分") %><br/>
           </div>
         <% end %>
       <% end %>
@@ -16,7 +16,7 @@
   <% if @complete.present? %>
     <% if date.strftime("%-m月%-d日") == @complete.updated_at.strftime("%-m月%-d日") %>
       <div>
-        <%= "チェックアウト：" %><br/><%= @complete.updated_at.strftime("%-H時%M分") %><br/>
+        <%= "アウト：" %><%= @complete.updated_at.strftime("%-H時%M分") %>
       </div>
     <% end %>
   <% end %>
