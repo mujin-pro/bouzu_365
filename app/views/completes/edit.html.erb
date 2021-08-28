@@ -1,0 +1,28 @@
+<div class="userpage">
+  <div class="userpage-content">
+    <h2 class="userpage-logo">チェックアウト（上書き修正）</h2>
+    <p class="alert mb-0" id="alert-devise"><%= alert %></p>
+    <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
+
+
+    <%= form_with model:@complete, url:complete_path(@complete), method: :patch, id: 'check-out-form', class: 'check-out-form',local: true do |f| %>
+
+      <div class="user-form">
+        <div class="row mb-3">
+          <%= f.label :活動内容, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "チェックアウト（上書き修正）" ,class:"re-check-out-button form-control btn-css bg-gradient mt-4", id:"re-check-out-button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

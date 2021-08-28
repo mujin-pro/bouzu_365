@@ -1,0 +1,41 @@
+<%= month_calendar events: @calendars do |date, calendars| %>
+  <%= date.strftime("%-d日") %>
+    <% @checks.each do |check| %>
+      <% if check.user_id == current_user.id %>
+        <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") %>
+          <%= link_to '詳細', check_path(check) %><br/>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+  <% if @checks.present? %>
+    <% @checks.each do |check| %>
+      <% if check.user_id == current_user.id %>
+        <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") && check.present? %>
+          <div>
+            <%= "イン：" %><%= check.updated_at.strftime("%-H時%M分") %><br/>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @completes.present? %>
+    <% @completes.each do |complete| %>
+      <% if complete.user_id == current_user.id %>
+        <% if date.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日") %>
+          <div>
+            <%= "アウト：" %><%= complete.updated_at.strftime("%-H時%M分") %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% calendars.each do |calendar| %>
+    <div>
+      <%= calendar.name %>
+    </div>
+  <% end %>
+<% end %>
