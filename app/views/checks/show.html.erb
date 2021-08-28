@@ -1,0 +1,51 @@
+<div class="userpage">
+  <div class="userpage-content">
+    <h2 class="userpage-logo"><%= @check.updated_at.strftime("%-m月%-d日") %></h2>
+    <p class="alert mb-0" id="alert-devise"><%= alert %></p>
+    <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
+
+
+    <%= form_with model:@check, url:checks_path, id: 'check-in-form', class: 'check-in-form',local: true do |f| %>
+
+      <div class="user-form">
+        <div class="row mb-3">
+          <%= f.label :チェックイン, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= @check.updated_at.strftime("%-H時%M分") %>
+            </div>
+        </div>
+      </div>
+
+      <div class="user-form">
+        <div class="row mb-3">
+          <%= f.label :チェックアウト, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= @complete.updated_at.strftime("%-H時%M分") %>
+            </div>
+        </div>
+      </div>
+
+      <div class="user-form">
+        <div class="row mb-3">
+          <%= f.label :活動目標, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"check-in-activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50", readonly: true %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_with model:@complete, url:complete_path, id: 'check-in-form', class: 'check-in-form',local: true do |f| %>
+
+      <div class="user-form">
+        <div class="row mb-3">
+          <%= f.label :活動内容, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"check-in-activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50", value: @complete.activities, readonly: true %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

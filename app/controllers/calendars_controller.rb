@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
   def index
     @calendars = Calendar.all
     @checks = Check.all
-    @complete = Complete.last
+    @completes = Complete.all
   end
 
   # GET /calendars/1 or /calendars/1.json

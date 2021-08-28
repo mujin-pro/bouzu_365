@@ -25,10 +25,10 @@
             <% end %>
           </div>
           <div class="check-around-button d-flex">
+            <% if @check.present? == false || @check.updated_at.strftime("%-m月%-d日") != Date.today.strftime("%-m月%-d日") %>
+              <%= link_to 'チェックイン', new_check_path, class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
+            <% end %>
             <% if @check.present? %>
-              <% if @check.updated_at.strftime("%-m月%-d日") != Date.today.strftime("%-m月%-d日") %>
-                <%= link_to 'チェックイン', new_check_path, class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
-              <% end %>
               <% if @check.updated_at.strftime("%-m月%-d日") == Date.today.strftime("%-m月%-d日") %>
                 <%= link_to '再チェックイン', edit_check_path(@check), class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
                 <%= link_to 'チェックイン取り消し', check_path(@check), method: :DELETE, class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
@@ -51,10 +51,10 @@
             <% end %>
           </div>
           <div class="check-around-button d-flex">
+            <% if @complete.present? == false || @complete.updated_at.strftime("%-m月%-d日") != Date.today.strftime("%-m月%-d日") %>
+              <%= link_to 'チェックアウト', new_complete_path, class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
+            <% end %>
             <% if @complete.present? %>
-              <% if @complete.updated_at.strftime("%-m月%-d日") != Date.today.strftime("%-m月%-d日") %>
-                <%= link_to 'チェックアウト', new_complete_path, class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
-              <% end %>
               <% if @complete.updated_at.strftime("%-m月%-d日") == Date.today.strftime("%-m月%-d日") %>
                 <%= link_to '再チェックアウト', edit_complete_path(@complete), class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
                 <%= link_to 'チェックアウト取り消し', complete_path(@complete), method: :DELETE, class: 'btn btn-primary bg-gradient mb-3 col-sm-4' %>
@@ -66,7 +66,7 @@
     </div>
     <div class="timeline-content container mt-5 rounded text-center">
       <nav>
-        <div class="mb-3 border-bottom pt-3 pb-3 bg-primary bg-gradient text-white"><h5>タイムライン</h5></div>
+        <div class="mb-3 border-bottom pt-3 pb-3 bg-primary bg-gradient text-white"><h5>タイムライン（チェックイン）</h5></div>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">あなた</a>
           <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">全ユーザー</a>

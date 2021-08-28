@@ -13,7 +13,6 @@ class ChecksController < ApplicationController
       @check_user8 = @checks.order(id: "DESC")[7]
       @check_user9 = @checks.order(id: "DESC")[8]
       @check_user10 = @checks.order(id: "DESC")[9]
-
     end
 
     @check1 = Check.all.order(id: "DESC")[0]
@@ -48,9 +47,12 @@ class ChecksController < ApplicationController
   end
 
   def update
-    @check = Check.last
+    @checks = Check.where(user_id: current_user.id)
+    @check = @checks.last
     if @check.updated_at.strftime("%-m月%-d日") == Date.today.strftime("%-m月%-d日")
-      if @check.update(check_params)
+      @check.destroy
+      @check_update = Check.create(check_params)
+      if @check_update.save
         redirect_to root_path
       end
     end
@@ -61,6 +63,16 @@ class ChecksController < ApplicationController
     @check = @checks.last
     if @check.destroy
       redirect_to root_path
+    end
+  end
+
+  def show
+    @check = Check.find(params[:id])
+    @completes = Complete.where(user_id: current_user.id)
+    @completes.each do |complete|
+      if @check.updated_at.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日")
+        @complete = complete
+      end
     end
   end
 
