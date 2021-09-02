@@ -4,7 +4,7 @@
     <title>Bouzu365</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
     
@@ -58,7 +58,24 @@ li {
   position: relative;
 }
 
+.checkpage {
+  height: 83vh;
+  text-align: center;
+  position: relative;
+}
+
 .userpage-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 55vw;
+  height: 80vh;
+}
+
+.checkpage-content {
   position: absolute;
   top: 0;
   right: 0;
@@ -71,6 +88,10 @@ li {
 
 .user-form {
   margin-top: 5%;
+}
+
+.check-form {
+  margin-top: 10%
 }
 
 .error-dummy {
@@ -201,6 +222,21 @@ li {
   font-size: small;
 }
 
+.activities-success {
+  display: none;
+  font-size: small;
+}
+
+.activities-error {
+  display: none;
+  font-size: small;
+}
+
+.activities-nil {
+  display: none;
+  font-size: small;
+}
+
 .form-none {
   display: none !important;
 }
@@ -220,7 +256,7 @@ li {
   width: 50vw;
 }
 
-.timeline-content {
+.timeline-container {
   height: 85vh;
   width: 50vw;
 }
@@ -230,6 +266,10 @@ li {
 }
 
 .check-around-button {
+  justify-content: space-around;
+}
+
+.complete-around-button {
   justify-content: space-around;
 }
 
@@ -247,6 +287,10 @@ li {
 
 .calendar-heading {
   text-align: center;
+}
+
+.dummy-space {
+  opacity: 0;
 }
 
 .footer {

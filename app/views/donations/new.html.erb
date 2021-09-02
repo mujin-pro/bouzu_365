@@ -1,0 +1,104 @@
+<div class="userpage">
+  <div class="userpage-content">
+    <h2 class="userpage-logo">禊（みそぎ）</h2>
+    <p class="alert mb-0" id="alert-devise"><%= alert %></p>
+    <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
+
+
+    <%= form_with model:@donation, url:donations_path, id: 'donation-form', class: 'donation-form',local: true do |f| %>
+
+      <div class="user-form">
+        <div class="row mb-3">
+          <%= f.label :payment_day, "禊する日付", :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.date_field :payment_day, autofocus: true, autocomplete: "payment_day", class:"form-control", id:"donation-day" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= f.label :price, "金額", :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :price, autofocus: true, autocomplete: "price",size: "100", class:"price form-control", id:"price", placeholder: "金額を入力してください" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= f.label :number, "カード番号", :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :number, autofocus: true, autocomplete: "number",size: "100", class:"number form-control", id:"number", placeholder: "カード番号を入力してください", maxlength:"16" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= f.label :cvc, "セキュリティコード", :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :cvc, autofocus: true, autocomplete: "cvc",size: "100", class:"cvc form-control", id:"cvc", placeholder: "カード背面の3桁もしくは4桁の番号を入力してください", maxlength:"4" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= f.label :exp_month, "有効期限（月）", :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :exp_month, autofocus: true, autocomplete: "exp_month",size: "100", class:"exp_month form-control", id:"exp_month", placeholder: "カードの有効期限（月）を入力してください", maxlength:"2" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= f.label :exp_year,"有効期限（年）", :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :exp_year, autofocus: true, autocomplete: "exp_year",size: "100", class:"exp_year form-control", id:"exp_year", placeholder: "カードの有効期限（年）を入力してください", maxlength:"2" %>
+              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
+              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
+              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
+              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "禊（みそぎ）する" ,class:"donation-button form-control btn-primary bg-gradient mt-4", id:"donation-button" %>
+        </div>
+      </div>
+    <% end %>
+
+    <button type="button" class="btn modal-button btn-primary mt-5", id="check-in-modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      モーダル用ボタン
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">チェックイン完了（トップページに戻ります）</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            今日も活動開始ですね！素晴らしいです！
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href='/'">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

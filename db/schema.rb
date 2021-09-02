@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_053350) do
+ActiveRecord::Schema.define(version: 2021_08_28_062341) do
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2021_08_21_053350) do
     t.index ["user_id"], name: "index_completes_on_user_id"
   end
 
+  create_table "donations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "payment_day", null: false
+    t.integer "price", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -51,4 +60,5 @@ ActiveRecord::Schema.define(version: 2021_08_21_053350) do
 
   add_foreign_key "checks", "users"
   add_foreign_key "completes", "users"
+  add_foreign_key "donations", "users"
 end

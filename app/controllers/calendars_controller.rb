@@ -6,6 +6,7 @@ class CalendarsController < ApplicationController
     @calendars = Calendar.all
     @checks = Check.all
     @completes = Complete.all
+    @donations = Donation.all
   end
 
   # GET /calendars/1 or /calendars/1.json

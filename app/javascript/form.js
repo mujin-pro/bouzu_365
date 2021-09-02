@@ -259,70 +259,35 @@ document.onkeyup = e => {
     CurrentPasswordBlank.setAttribute("style", "display:none !important");
     CurrentPasswordNil.setAttribute("style", "display:none !important");
   };
-};
 
-function SignUpError () {
-  const ErrorMessage = document.getElementById("error-message");
-  const ErrorMessageContent = ErrorMessage.innerHTML;
-  const ErrorDummy = document.getElementById("error-dummy");
-
-  if (ErrorMessageContent) {
-    ErrorDummy.setAttribute("style", "display: none;");
+  const CheckInActivities = document.getElementById("check-in-activities"); 
+  const ActivitiesDummy = document.getElementById("activities-dummy");
+  const ActivitiesSuccess = document.getElementById("activities-success");
+  const ActivitiesError = document.getElementById("activities-error");
+  const ActivitiesNil = document.getElementById("activities-nil");
+  const InputActivities = CheckInActivities.value;
+  
+  if (InputActivities == '') {
+    CheckInActivities.setAttribute("class", "form-control");
+    ActivitiesDummy.setAttribute("style", "display:none !important");
+    ActivitiesSuccess.setAttribute("style", "display:none !important");
+    ActivitiesError.setAttribute("style", "display:none !important");
+    ActivitiesNil.setAttribute("style", "display:block");
+  }
+  else if (InputActivities.length > 50) {
+    CheckInActivities.setAttribute("class", "form-control is-invalid");
+    CheckInActivities.setAttribute("style", "red");
+    ActivitiesDummy.setAttribute("style", "display:none !important");
+    ActivitiesSuccess.setAttribute("style", "display:none !important");
+    ActivitiesError.setAttribute("style", "display:block");
+    ActivitiesNil.setAttribute("style", "display:none !important");
+    }
+  else {
+    CheckInActivities.setAttribute("class", "form-control is-valid");
+    CheckInActivities.setAttribute("style", "green");
+    ActivitiesDummy.setAttribute("style", "display:none !important");
+    ActivitiesSuccess.setAttribute("style", "display:block");
+    ActivitiesError.setAttribute("style", "display:none !important");
+    ActivitiesNil.setAttribute("style", "display:none !important");
   };
 };
-
-function SignInError () {
-  const AlertDevise = document.getElementById("alert-devise");
-  const AlertDeviseContent = AlertDevise.innerHTML;
-  const AlertSelf = document.getElementById("alert-self")
-
-  if (AlertDeviseContent) {
-    AlertDevise.setAttribute("style", "display: none;")
-    AlertSelf.setAttribute("style", "display: block;")
-  }
-};
-
-function CheckInModal () {
-  const CheckInButton = document.getElementById("check-in-button");
-  CheckInButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const form = document.getElementById("check-in-form");
-    const formData = new FormData(form);
-    const XHR = new XMLHttpRequest();
-    XHR.open("POST", "/checks", true);
-    XHR.responseType = "json";
-    XHR.send(formData);
-    XHR.onload = () => {
-      const CheckInModalButton = document.getElementById("check-in-modal-button"); 
-      CheckInModalButton.click();
-      setTimeout(function(){
-          window.location.href = '/';
-        }, 3*1000);
-    };
-  });
-};
-
-function CheckOutModal () {
-  const CheckOutButton = document.getElementById("check-out-button");
-  CheckOutButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    const form = document.getElementById("check-out-form");
-    const formData = new FormData(form);
-    const XHR = new XMLHttpRequest();
-    XHR.open("POST", "/completes", true);
-    XHR.responseType = "json";
-    XHR.send(formData);
-    XHR.onload = () => {
-      const CheckOutModalButton = document.getElementById("check-out-modal-button"); 
-      CheckOutModalButton.click();
-      setTimeout(function(){
-          window.location.href = '/';
-        }, 3*1000);
-    };
-  });
-};
-
-window.addEventListener('load', SignUpError)
-window.addEventListener('load', SignInError)
-window.addEventListener('load', CheckInModal)
-window.addEventListener('load', CheckOutModal)

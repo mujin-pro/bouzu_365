@@ -1,17 +1,63 @@
 <div class="userpage">
-  <div class="userpage-content">
-    <h2 class="userpage-logo">チェックイン</h2>
-    <p class="alert mb-0" id="alert-devise"><%= alert %></p>
-    <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
-
+  <div class="checkpage-content">
+    <h2 class="checkpage-logo mb-5">チェックイン</h2>
 
     <%= form_with model:@check, url:checks_path, id: 'check-in-form', class: 'check-in-form',local: true do |f| %>
 
-      <div class="user-form">
-        <div class="row mb-3">
-          <%= f.label :活動目標, :class => "col-sm-4 col-form-label" %>
+      <div class="check-form">
+        <div class="row mb-3 form-none">
+          <%= f.label :name, :class => "col-sm-4 col-form-label" %>
             <div class="col-sm-8">
-              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"check-in-activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control", placeholder: "太郎", id: "user_name" %>
+              <div class="name-dummy dummy-alart mt-1 text-info" id="name-dummy">入力必須項目です。</div>
+              <div class="name-success mt-1 text-success" id="name-success">正しく入力されています。</div>
+              <div class="name-error mt-1 text-danger" id="name-blank">空白が入力されています。</div>
+              <div class="name-nil mt-1 text-info" id="name-nil">入力必須項目です。</div>
+              <div class="name-length mt-1 text-danger" id="name-length">文字数が20文字を超えています。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 form-none">
+          <%= f.label :email, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :email, autofocus: true, autocomplete: "email", :class => "form-control", placeholder: "test@example.com", id: "user_email" %>
+              <div class="email-dummy dummy-alart mt-1 text-info" id="email-dummy">入力必須項目です。</div>
+              <div class="email-success mt-1 text-success" id="email-success">正しく入力されています。</div>
+              <div class="email-error mt-1 text-danger" id="email-error">@を含むメールアドレス形式（半角英数字・記号）で入力してください。</div>
+              <div class="email-error mt-1 text-danger" id="email-blank">空白が入力されています。</div>
+              <div class="email-nil mt-1 text-info" id="email-nil">入力必須項目です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3 form-none">
+          <%= f.label :password, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.password_field :password, autocomplete: "new-password", :class => "form-control", placeholder: "6文字以上で入力してください", id: "user_password" %>
+              <div class="password-dummy dummy-alart mt-1 text-info" id="password-dummy">入力必須項目です。</div>
+              <div class="password-success mt-1 text-success" id="password-success">正しく入力されています。</div>
+              <div class="password-error mt-1 text-danger" id="password-error">6文字以上の半角英数字で入力してください。</div>
+              <div class="password-error mt-1 text-danger" id="password-blank">空白が入力されています。</div>
+              <div class="password-nil mt-1 text-info" id="password-nil">入力必須項目です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3 form-none">
+          <%= f.label :password_confirmation, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control", placeholder: "パスワードと同じ内容を入力してください", id: "user_password_confirmation" %>
+              <div class="password-confirmation-dummy dummy-alart mt-1 text-info" id="password-confirmation-dummy">入力必須項目です。</div>
+              <div class="password-confirmation-success mt-1 text-success" id="password-confirmation-success">正しく入力されています。</div>
+              <div class="password-confirmation-error mt-1 text-danger" id="password-confirmation-error">パスワードと同じ内容を入力してください。</div>
+              <div class="password-confirmation-error mt-1 text-danger" id="password-confirmation-blank">空白が入力されています。</div>
+              <div class="password-confirmation-nil mt-1 text-info" id="password-confirmation-nil">入力必須項目です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3 form-none">
+          <%= f.label :ミッション, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_area :mission, autofocus: true, autocomplete: "mission", :size => "100", :class => "mission form-control", placeholder: "朝活を始める理由（目標）を50文字以内で入力してください", id: "user_mission"%>
               <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
               <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
               <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
@@ -19,8 +65,31 @@
             </div>
         </div>
 
-        <div class="actions">
-          <%= f.submit "チェックイン" ,class:"check-in-button form-control btn-primary bg-gradient mt-4", id:"check-in-button" %>
+        <div class="row mb-3 form-none">
+          <%= f.label :現在のパスワード, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.password_field :current_password, autocomplete: "new-password", :class => "form-control", placeholder: "現在のパスワードを入力してください", id: "user_current_password" %>
+              <div class="current-password-dummy dummy-alart mt-1 text-info" id="current-password-dummy">入力必須項目です。</div>
+              <div class="current-password-success mt-1 text-success" id="current-password-success">正しく入力されています。</div>
+              <div class="password-error mt-1 text-danger" id="current-password-error">6文字以上の半角英数字で入力してください。</div>
+              <div class="current-password-error mt-1 text-danger" id="current-password-blank">空白が入力されています。</div>
+              <div class="current-password-nil mt-1 text-info" id="current-password-nil">入力必須項目です。</div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= f.label :活動目標, :class => "col-sm-4 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"check-in-activities", placeholder: "活動内容を50文字以内で入力してください" %>
+              <div class="activities-dummy dummy-alart mt-1 text-secondary" id="activities-dummy">入力は任意です。</div>
+              <div class="activities-success mt-1 text-success" id="activities-success">正しく入力されています。</div>
+              <div class="activities-error mt-1 text-danger" id="activities-error">50文字を超過しています。</div>
+              <div class="activities-nil mt-1 text-secondary" id="activities-nil">入力は任意です。</div>
+            </div>
+        </div>
+
+        <div>
+          <%= f.submit "チェックイン" ,class:"check-in-button form-control btn-primary bg-gradient mt-4 btn-css", id:"check-in-button" %>
         </div>
       </div>
     <% end %>

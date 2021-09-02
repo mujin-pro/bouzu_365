@@ -8,30 +8,39 @@
       <% end %>
     <% end %>
 
-
-  <% if @checks.present? %>
-    <% @checks.each do |check| %>
-      <% if check.user_id == current_user.id %>
-        <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") && check.present? %>
-          <div>
-            <%= "イン：" %><%= check.updated_at.strftime("%-H時%M分") %><br/>
-          </div>
+    <% @donations.each do |donation| %>
+      <% if donation.present? %>
+        <% if donation.user_id == current_user.id %>
+          <% if date.strftime("%-m月%-d日") == donation.payment_day.strftime("%-m月%-d日") %>
+            <%= "禊済み" %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <% if @completes.present? %>
-    <% @completes.each do |complete| %>
-      <% if complete.user_id == current_user.id %>
-        <% if date.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日") %>
-          <div>
-            <%= "アウト：" %><%= complete.updated_at.strftime("%-H時%M分") %>
-          </div>
+    <% if @checks.present? %>
+      <% @checks.each do |check| %>
+        <% if check.user_id == current_user.id %>
+          <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") && check.present? %>
+            <div>
+              <%= "イン：" %><%= check.updated_at.strftime("%-H時%M分") %><br/>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
+
+    <% if @completes.present? %>
+      <% @completes.each do |complete| %>
+        <% if complete.user_id == current_user.id %>
+          <% if date.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日") %>
+            <div>
+              <%= "アウト：" %><%= complete.updated_at.strftime("%-H時%M分") %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
 
   <% calendars.each do |calendar| %>
     <div>
