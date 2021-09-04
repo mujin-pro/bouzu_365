@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_08_28_062341) do
   end
 
   create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "activities"
+    t.text "goal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_08_28_062341) do
   end
 
   create_table "completes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "activities"
+    t.text "activity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false

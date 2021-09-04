@@ -12,7 +12,9 @@
       <% if donation.present? %>
         <% if donation.user_id == current_user.id %>
           <% if date.strftime("%-m月%-d日") == donation.payment_day.strftime("%-m月%-d日") %>
-            <%= "禊済み" %>
+            <div class="donation-content">
+              <p><img src="/assets/donation-stamp.jpg" class="donation-img"></p>
+            </div>
           <% end %>
         <% end %>
       <% end %>

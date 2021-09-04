@@ -260,34 +260,143 @@ document.onkeyup = e => {
     CurrentPasswordNil.setAttribute("style", "display:none !important");
   };
 
-  const CheckInActivities = document.getElementById("check-in-activities"); 
-  const ActivitiesDummy = document.getElementById("activities-dummy");
-  const ActivitiesSuccess = document.getElementById("activities-success");
-  const ActivitiesError = document.getElementById("activities-error");
-  const ActivitiesNil = document.getElementById("activities-nil");
-  const InputActivities = CheckInActivities.value;
+  const CheckGoal = document.getElementById("check-goal"); 
+  const GoalDummy = document.getElementById("goal-dummy");
+  const GoalSuccess = document.getElementById("goal-success");
+  const GoalError = document.getElementById("goal-error");
+  const GoalNil = document.getElementById("goal-nil");
+  const InputGoal = CheckGoal.value;
   
-  if (InputActivities == '') {
-    CheckInActivities.setAttribute("class", "form-control");
-    ActivitiesDummy.setAttribute("style", "display:none !important");
-    ActivitiesSuccess.setAttribute("style", "display:none !important");
-    ActivitiesError.setAttribute("style", "display:none !important");
-    ActivitiesNil.setAttribute("style", "display:block");
+  if (InputGoal == '') {
+    CheckGoal.setAttribute("class", "form-control");
+    GoalDummy.setAttribute("style", "display:none !important");
+    GoalSuccess.setAttribute("style", "display:none !important");
+    GoalError.setAttribute("style", "display:none !important");
+    GoalNil.setAttribute("style", "display:block");
   }
-  else if (InputActivities.length > 50) {
-    CheckInActivities.setAttribute("class", "form-control is-invalid");
-    CheckInActivities.setAttribute("style", "red");
-    ActivitiesDummy.setAttribute("style", "display:none !important");
-    ActivitiesSuccess.setAttribute("style", "display:none !important");
-    ActivitiesError.setAttribute("style", "display:block");
-    ActivitiesNil.setAttribute("style", "display:none !important");
+  else if (InputGoal.length > 50) {
+    CheckGoal.setAttribute("class", "form-control is-invalid");
+    CheckGoal.setAttribute("style", "red");
+    GoalDummy.setAttribute("style", "display:none !important");
+    GoalSuccess.setAttribute("style", "display:none !important");
+    GoalError.setAttribute("style", "display:block");
+    GoalNil.setAttribute("style", "display:none !important");
     }
   else {
-    CheckInActivities.setAttribute("class", "form-control is-valid");
-    CheckInActivities.setAttribute("style", "green");
-    ActivitiesDummy.setAttribute("style", "display:none !important");
-    ActivitiesSuccess.setAttribute("style", "display:block");
-    ActivitiesError.setAttribute("style", "display:none !important");
-    ActivitiesNil.setAttribute("style", "display:none !important");
+    CheckGoal.setAttribute("class", "form-control is-valid");
+    CheckGoal.setAttribute("style", "green");
+    GoalDummy.setAttribute("style", "display:none !important");
+    GoalSuccess.setAttribute("style", "display:block");
+    GoalError.setAttribute("style", "display:none !important");
+    GoalNil.setAttribute("style", "display:none !important");
+  };
+
+  const CompleteActivity = document.getElementById("complete-activity"); 
+  const ActivityDummy = document.getElementById("activity-dummy");
+  const ActivitySuccess = document.getElementById("activity-success");
+  const ActivityError = document.getElementById("activity-error");
+  const ActivityNil = document.getElementById("activity-nil");
+  const InputActivity = CompleteActivity.value;
+  
+  if (InputActivity == '') {
+    CompleteActivity.setAttribute("class", "form-control");
+    ActivityDummy.setAttribute("style", "display:none !important");
+    ActivitySuccess.setAttribute("style", "display:none !important");
+    ActivityError.setAttribute("style", "display:none !important");
+    ActivityNil.setAttribute("style", "display:block");
+  }
+  else if (InputActivity.length > 50) {
+    CompleteActivity.setAttribute("class", "form-control is-invalid");
+    CompleteActivity.setAttribute("style", "red");
+    ActivityDummy.setAttribute("style", "display:none !important");
+    ActivitySuccess.setAttribute("style", "display:none !important");
+    ActivityError.setAttribute("style", "display:block");
+    ActivityNil.setAttribute("style", "display:none !important");
+    }
+  else {
+    CompleteActivity.setAttribute("class", "form-control is-valid");
+    CompleteActivity.setAttribute("style", "green");
+    ActivityDummy.setAttribute("style", "display:none !important");
+    ActivitySuccess.setAttribute("style", "display:block");
+    ActivityError.setAttribute("style", "display:none !important");
+    ActivityNil.setAttribute("style", "display:none !important");
+  };
+
+  const PaymentDay = document.getElementById("payment-day"); 
+  const PaymentDayDummy = document.getElementById("payment-day-dummy");
+  const PaymentDaySuccess = document.getElementById("payment-day-success");
+  const PaymentDayBlank = document.getElementById("payment-day-blank");
+  const PaymentDayNil = document.getElementById("payment-day-nil");
+  const InputPaymentDay = PaymentDay.value;
+
+  if (InputPaymentDay.match(/\s/)) {
+    PaymentDay.setAttribute("class", "form-control is-invalid")
+    PaymentDay.setAttribute("style", "red");
+    PaymentDayDummy.setAttribute("style", "display:none !important");
+    PaymentDaySuccess.setAttribute("style", "display:none !important");
+    PaymentDayBlank.setAttribute("style", "display:block");
+    PaymentDayNil.setAttribute("style", "display:none !important");
+  }
+  else if (InputPaymentDay == '') {
+    PaymentDay.setAttribute("class", "form-control");
+    PaymentDay.setAttribute("style", "blue");
+    PaymentDayDummy.setAttribute("style", "display:none !important");
+    PaymentDaySuccess.setAttribute("style", "display:none !important");
+    PaymentDayBlank.setAttribute("style", "display:none !important");
+    PaymentDayNil.setAttribute("style", "display:block");
+  }
+  else {
+    PaymentDay.setAttribute("class", "form-control is-valid");
+    PaymentDay.setAttribute("style", "green");
+    PaymentDayDummy.setAttribute("style", "display:none !important");
+    PaymentDaySuccess.setAttribute("style", "display:block");
+    PaymentDayBlank.setAttribute("style", "display:none !important");
+    PaymentDayNil.setAttribute("style", "display:none !important");
+  };
+
+  const Price = document.getElementById("price"); 
+  const PriceDummy = document.getElementById("price-dummy");
+  const PriceSuccess = document.getElementById("price-success");
+  const PriceError = document.getElementById("price-error");
+  const PriceBlank = document.getElementById("price-blank");
+  const PriceNil = document.getElementById("price-nil");
+  const InputPrice = Price.value;
+  const PriceReg = /^[0-9]+$/;
+
+  if (InputPrice.match(/\s/)) {
+    Price.setAttribute("class", "form-control is-invalid")
+    Price.setAttribute("style", "red");
+    PriceDummy.setAttribute("style", "display:none !important");
+    PriceSuccess.setAttribute("style", "display:none !important");
+    PriceError.setAttribute("style", "display:none !important");
+    PriceBlank.setAttribute("style", "display:block");
+    PriceNil.setAttribute("style", "display:none !important");
+  }
+  else if (InputPrice == '') {
+    Price.setAttribute("class", "form-control");
+    Price.setAttribute("style", "blue");
+    PriceDummy.setAttribute("style", "display:none !important");
+    PriceSuccess.setAttribute("style", "display:none !important");
+    PriceError.setAttribute("style", "display:none !important");
+    PriceBlank.setAttribute("style", "display:none !important");
+    PriceNil.setAttribute("style", "display:block");
+  }
+  else if (PriceReg.test(InputPrice)) {
+    Price.setAttribute("class", "form-control is-valid");
+    Price.setAttribute("style", "green");
+    PriceDummy.setAttribute("style", "display:none !important");
+    PriceSuccess.setAttribute("style", "display:block");
+    PriceError.setAttribute("style", "display:none !important");
+    PriceBlank.setAttribute("style", "display:none !important");
+    PriceNil.setAttribute("style", "display:none !important");
+    }
+  else {
+    Price.setAttribute("class", "form-control is-invalid");
+    Price.setAttribute("style", "red");
+    PriceDummy.setAttribute("style", "display:none !important");
+    PriceSuccess.setAttribute("style", "display:none !important");
+    PriceError.setAttribute("style", "display:block");
+    PriceBlank.setAttribute("style", "display:none !important");
+    PriceNil.setAttribute("style", "display:none !important");
   };
 };

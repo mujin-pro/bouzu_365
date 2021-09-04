@@ -8,7 +8,7 @@ class DonationsController < ApplicationController
     if @donation.valid?
       pay_item
       if @donation.save
-        redirect_to root_path
+        redirect_to controller: :calendars, action: :index
       end
     end
   end
