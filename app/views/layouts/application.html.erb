@@ -4,7 +4,7 @@
     <title>Bouzu365</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
     
@@ -58,7 +58,58 @@ li {
   position: relative;
 }
 
+.checkpage {
+  height: 83vh;
+  text-align: center;
+  position: relative;
+}
+
+.completepage {
+  height: 83vh;
+  text-align: center;
+  position: relative;
+}
+
+.donationpage {
+  height: 83vh;
+  text-align: center;
+  position: relative;
+}
+
 .userpage-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 55vw;
+  height: 80vh;
+}
+
+.checkpage-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 55vw;
+  height: 80vh;
+}
+
+.completepage-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 55vw;
+  height: 80vh;
+}
+
+.donationpage-content {
   position: absolute;
   top: 0;
   right: 0;
@@ -71,6 +122,14 @@ li {
 
 .user-form {
   margin-top: 5%;
+}
+
+.check-form {
+  margin-top: 10%
+}
+
+.complete-form {
+  margin-top: 10%
 }
 
 .error-dummy {
@@ -201,6 +260,71 @@ li {
   font-size: small;
 }
 
+.goal-success {
+  display: none;
+  font-size: small;
+}
+
+.goal-error {
+  display: none;
+  font-size: small;
+}
+
+.goal-nil {
+  display: none;
+  font-size: small;
+}
+
+.activity-success {
+  display: none;
+  font-size: small;
+}
+
+.activity-error {
+  display: none;
+  font-size: small;
+}
+
+.activity-nil {
+  display: none;
+  font-size: small;
+}
+
+.payment-day-success {
+  display: none;
+  font-size: small;
+}
+
+.payment-day-error {
+  display: none;
+  font-size: small;
+}
+
+.payment-day-nil {
+  display: none;
+  font-size: small;
+}
+
+.price-success {
+  display: none;
+  font-size: small;
+}
+
+.price-error {
+  display: none;
+  font-size: small;
+}
+
+.price-blank {
+  display: none;
+  font-size: small;
+}
+
+.price-nil {
+  display: none;
+  font-size: small;
+}
+
 .form-none {
   display: none !important;
 }
@@ -220,7 +344,7 @@ li {
   width: 50vw;
 }
 
-.timeline-content {
+.timeline-container {
   height: 85vh;
   width: 50vw;
 }
@@ -230,6 +354,10 @@ li {
 }
 
 .check-around-button {
+  justify-content: space-around;
+}
+
+.complete-around-button {
   justify-content: space-around;
 }
 
@@ -249,9 +377,40 @@ li {
   text-align: center;
 }
 
+.dummy-space {
+  opacity: 0;
+}
+
 .footer {
   height: 6vh;
 }
+
+.goal-concrete-content {
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.activity-concrete-content {
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.mission-concrete-content {
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.donation-content {
+  text-align: center;
+}
+
+.donation-img {
+  opacity: 1;
+}
+
 </style>
 
   <body>

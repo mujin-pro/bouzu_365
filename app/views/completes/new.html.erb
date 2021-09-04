@@ -1,48 +1,8 @@
 <div class="userpage">
-  <div class="userpage-content">
-    <h2 class="userpage-logo">チェックアウト</h2>
-    <p class="alert mb-0" id="alert-devise"><%= alert %></p>
-    <li class="alert-self mt-3", id="alert-self">メールアドレスまたはパスワードが違います<li>
+  <div class="completepage-content">
+    <h2 class="completepage-logo mb-5">チェックアウト</h2>
 
-
-    <%= form_with model:@complete, id: 'check-out-form', class: 'check-out-form',local: true do |f| %>
-
-      <div class="user-form">
-        <div class="row mb-3">
-          <%= f.label :活動内容, :class => "col-sm-4 col-form-label" %>
-            <div class="col-sm-8">
-              <%= f.text_area :activities, autofocus: true, autocomplete: "activities",size: "100", class:"activities form-control", id:"check-out-activities", placeholder: "活動内容を50文字以内で入力してください", maxlength:"50" %>
-              <div class="mission-dummy dummy-alart mt-1 text-secondary" id="mission-dummy">入力は任意です。</div>
-              <div class="mission-success mt-1 text-success" id="mission-success">正しく入力されています。</div>
-              <div class="mission-error mt-1 text-danger" id="mission-error">50文字を超過しています。</div>
-              <div class="mission-nil mt-1 text-secondary" id="mission-nil">入力は任意です。</div>
-            </div>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "チェックアウト" ,class:"check-out-button form-control btn-css bg-gradient mt-4", id:"check-out-button" %>
-        </div>
-      </div>
-    <% end %>
-    <button type="button" class="btn modal-button btn-primary mt-5", id="check-out-modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      モーダル用ボタン
-    </button>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">チェックアウト完了（トップページに戻ります）</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            活動終了、お疲れ様でした！
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href='/'">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "shared/complete_new_form" %>
+    
   </div>
 </div>

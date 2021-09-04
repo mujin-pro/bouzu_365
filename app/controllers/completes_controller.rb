@@ -1,4 +1,6 @@
 class CompletesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :user_complete
 
   def new
     @complete = Complete.new
@@ -7,7 +9,6 @@ class CompletesController < ApplicationController
   def create
     @complete = Complete.create(complete_params)
     render json:{ post: @complete }
-    # @complete.save
   end
   
   def edit
@@ -37,6 +38,14 @@ class CompletesController < ApplicationController
   private
 
   def complete_params
-    params.require(:complete).permit(:activities).merge(user_id: current_user.id)
+    params.require(:complete).permit(:activity).merge(user_id: current_user.id)
+  end
+
+  def user_complete
+    if Complete.where(user_id: current_user.id) .present? && user_signed_in?
+      @user_all_completes = Complete.where(user_id: current_user.id)
+      @user_last_complete = @user_all_completes.last
+      @user_all_completes_order = @user_all_completes.order(id: "DESC")
+    end
   end
 end

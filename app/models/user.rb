@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :checks
   has_many :completes
+  has_many :donations
 end

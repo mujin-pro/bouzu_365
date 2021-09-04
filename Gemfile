@@ -65,3 +65,5 @@ gem 'devise-i18n'
 gem 'pry-rails'
 
 gem 'simple_calendar', '~> 2.0'
+
+gem 'payjp'

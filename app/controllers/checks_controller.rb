@@ -1,31 +1,11 @@
 class ChecksController < ApplicationController
+before_action :authenticate_user!, except: [:index]
+before_action :user_checks, only: [:index]
+before_action :user_completes, only: [:index, :show]
+before_action :all_checks, only: [:index]
+
+
   def index
-    if user_signed_in? && Check.last.present?
-      @checks = Check.where(user_id: current_user.id)
-      @check = @checks.last
-      @check_user1 = @checks.order(id: "DESC")[0]
-      @check_user2 = @checks.order(id: "DESC")[1]
-      @check_user3 = @checks.order(id: "DESC")[2]
-      @check_user4 = @checks.order(id: "DESC")[3]
-      @check_user5 = @checks.order(id: "DESC")[4]
-      @check_user6 = @checks.order(id: "DESC")[5]
-      @check_user7 = @checks.order(id: "DESC")[6]
-      @check_user8 = @checks.order(id: "DESC")[7]
-      @check_user9 = @checks.order(id: "DESC")[8]
-      @check_user10 = @checks.order(id: "DESC")[9]
-    end
-
-    @check1 = Check.all.order(id: "DESC")[0]
-    @check2 = Check.all.order(id: "DESC")[1]
-    @check3 = Check.all.order(id: "DESC")[2]
-    @check4 = Check.all.order(id: "DESC")[3]
-    @check5 = Check.all.order(id: "DESC")[4]
-    @check6 = Check.all.order(id: "DESC")[5]
-    @check7 = Check.all.order(id: "DESC")[6]
-    @check8 = Check.all.order(id: "DESC")[7]
-    @check9 = Check.all.order(id: "DESC")[8]
-    @check10 = Check.all.order(id: "DESC")[9]
-
     if user_signed_in? && Complete.last.present?
       @completes = Complete.where(user_id: current_user.id)
       @complete = @completes.last
@@ -39,7 +19,6 @@ class ChecksController < ApplicationController
   def create
     @check = Check.create(check_params)
     render json:{ post: @check }
-    # @check.save
   end
 
   def edit
@@ -68,8 +47,7 @@ class ChecksController < ApplicationController
 
   def show
     @check = Check.find(params[:id])
-    @completes = Complete.where(user_id: current_user.id)
-    @completes.each do |complete|
+    @user_all_completes.each do |complete|
       if @check.updated_at.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日")
         @complete = complete
       end
@@ -79,6 +57,31 @@ class ChecksController < ApplicationController
   private
 
   def check_params
-    params.require(:check).permit(:activities).merge(user_id: current_user.id)
+    params.require(:check).permit(:goal).merge(user_id: current_user.id)
   end
+
+  def user_checks
+    if user_signed_in? && Check.where(user_id: current_user.id).present?
+      @user_all_checks = Check.where(user_id: current_user.id)
+      @user_last_check = @user_all_checks.last
+      @user_all_checks_order = @user_all_checks.order(id: "DESC")
+    end
+  end
+
+  def user_completes
+    if user_signed_in? && Complete.where(user_id: current_user.id).present?
+      @user_all_completes = Complete.where(user_id: current_user.id)
+      @user_last_complete = @user_all_completes.last
+      @user_all_completes_order = @user_all_completes.order(id: "DESC")
+    end
+  end
+
+  def all_checks
+    if Check.all.present? && user_signed_in?
+      @all_checks = Check.all
+      @last_check = Check.last
+      @all_checks_order = @all_checks.order(id: "DESC")
+    end
+  end
+
 end

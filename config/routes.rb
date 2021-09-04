@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'checks#index' 
   resources :checks
   resources :completes, only: [:index, :create, :new, :edit, :update, :destroy]
+  resources :donations, only: [:new, :create]
 end
