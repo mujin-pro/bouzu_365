@@ -5,6 +5,8 @@
         <div class="border rounded text-center">
           <div class="mission-content border-bottom pt-3 pb-3 bg-primary bg-gradient text-white">
             <h4><%= current_user.name %>さんのミッション</h4>
+            <%= Date.today.strftime("%-m月%-d日") %>
+            <%= @user_last_check.updated_at.strftime("%-m月%-d日") %>
           </div>
           <div class="mission-concrete-content mt-3 mb-3">
             <h5 class="content2-subheading"><%= current_user.mission %></h5>
