@@ -47,9 +47,11 @@ before_action :all_checks, only: [:index]
 
   def show
     @check = Check.find(params[:id])
-    @user_all_completes.each do |complete|
-      if @check.updated_at.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日")
-        @complete = complete
+    if @user_all_completes.present?
+      @user_all_completes.each do |complete|
+        if @check.updated_at.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日")
+          @complete = complete
+        end
       end
     end
   end

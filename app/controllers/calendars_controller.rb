@@ -1,10 +1,12 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: %i[ show edit update destroy ]
+  before_action :user_checks, only: [:index]
+  before_action :user_completes, only: [:index]
+  before_action :all_checks, only: [:index]
 
   # GET /calendars or /calendars.json
   def index
     @calendars = Calendar.all
-    @checks = Check.all
     @completes = Complete.all
     @donations = Donation.all
   end
@@ -68,5 +70,29 @@ class CalendarsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def calendar_params
       params.require(:calendar).permit(:name, :start_time)
+    end
+
+    def user_checks
+      if user_signed_in? && Check.where(user_id: current_user.id).present?
+        @user_all_checks = Check.where(user_id: current_user.id)
+        @user_last_check = @user_all_checks.last
+        @user_all_checks_order = @user_all_checks.order(id: "DESC")
+      end
+    end
+
+    def user_completes
+      if user_signed_in? && Complete.where(user_id: current_user.id).present?
+        @user_all_completes = Complete.where(user_id: current_user.id)
+        @user_last_complete = @user_all_completes.last
+        @user_all_completes_order = @user_all_completes.order(id: "DESC")
+      end
+    end
+
+    def all_checks
+      if Check.all.present? && user_signed_in?
+        @all_checks = Check.all
+        @last_check = Check.last
+        @all_checks_order = @all_checks.order(id: "DESC")
+      end
     end
 end

@@ -1,10 +1,8 @@
 <%= month_calendar events: @calendars do |date, calendars| %>
   <%= date.strftime("%-d日") %>
-    <% @checks.each do |check| %>
-      <% if check.user_id == current_user.id %>
-        <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") %>
-          <%= link_to '詳細', check_path(check) %><br/>
-        <% end %>
+    <% @user_all_checks.each do |check| %>
+      <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") %>
+        <%= link_to '詳細', check_path(check) %><br/>
       <% end %>
     <% end %>
 
@@ -20,8 +18,8 @@
       <% end %>
     <% end %>
 
-    <% if @checks.present? %>
-      <% @checks.each do |check| %>
+    <% if @user_all_checks.present? %>
+      <% @user_all_checks.each do |check| %>
         <% if check.user_id == current_user.id %>
           <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") && check.present? %>
             <div>
@@ -32,8 +30,8 @@
       <% end %>
     <% end %>
 
-    <% if @completes.present? %>
-      <% @completes.each do |complete| %>
+    <% if @user_all_completes.present? %>
+      <% @user_all_completes.each do |complete| %>
         <% if complete.user_id == current_user.id %>
           <% if date.strftime("%-m月%-d日") == complete.updated_at.strftime("%-m月%-d日") %>
             <div>

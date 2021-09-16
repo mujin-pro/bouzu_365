@@ -39,7 +39,9 @@
               <h4>当日の目標</h4>
             </div>
             <div class="goal-concrete-content mt-2 mb-2">
-              <h5 class="content2-subheading"><%= @check.goal %></h5>
+              <% if @check.present? %>
+                <h5 class="content2-subheading"><%= @check.goal %></h5>
+              <% end %>
             </div>
           </div>
         </div>
@@ -50,7 +52,9 @@
               <h4>当日の活動内容</h4>
             </div>
             <div class="activity-concrete-content mt-2 mb-2">
-              <h5 class="content2-subheading"><%= @complete.activity %></h5>
+              <% if @complete.present? %>
+                <h5 class="content2-subheading"><%= @complete.activity %></h5>
+              <% end %>
             </div>
           </div>
         </div>
