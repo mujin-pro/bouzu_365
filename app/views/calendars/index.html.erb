@@ -1,8 +1,10 @@
 <%= month_calendar events: @calendars do |date, calendars| %>
   <%= date.strftime("%-d日") %>
-    <% @user_all_checks.each do |check| %>
-      <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") %>
-        <%= link_to '詳細', check_path(check) %><br/>
+    <% if user_signed_in? && Check.where(user_id: current_user.id).present? %>
+      <% @user_all_checks.each do |check| %>
+        <% if date.strftime("%-m月%-d日") == check.updated_at.strftime("%-m月%-d日") %>
+          <%= link_to '詳細', check_path(check) %><br/>
+        <% end %>
       <% end %>
     <% end %>
 
