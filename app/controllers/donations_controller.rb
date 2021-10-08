@@ -7,9 +7,7 @@ class DonationsController < ApplicationController
     @donation = Donation.create(donation_params)
     if @donation.valid?
       pay_item
-      if @donation.save
-        redirect_to controller: :calendars, action: :index
-      end
+      redirect_to controller: :calendars, action: :index if @donation.save
     end
   end
 
@@ -20,11 +18,11 @@ class DonationsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: donation_params[:price],
-        card: donation_params[:token],
-        currency: 'jpy'
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: donation_params[:price],
+      card: donation_params[:token],
+      currency: 'jpy'
     )
   end
 end

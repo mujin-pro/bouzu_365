@@ -8,9 +8,9 @@ class CompletesController < ApplicationController
 
   def create
     @complete = Complete.create(complete_params)
-    render json:{ post: @complete }
+    render json: { post: @complete }
   end
-  
+
   def edit
     @complete = Complete.last
   end
@@ -18,21 +18,17 @@ class CompletesController < ApplicationController
   def update
     @completes = Complete.where(user_id: current_user.id)
     @complete = @completes.last
-    if @complete.updated_at.strftime("%-m月%-d日") == Date.today.strftime("%-m月%-d日")
+    if @complete.updated_at.strftime('%-m月%-d日') == Date.today.strftime('%-m月%-d日')
       @complete.destroy
       @complete_update = Complete.create(complete_params)
-      if @complete_update.save
-        redirect_to root_path
-      end
+      redirect_to root_path if @complete_update.save
     end
   end
 
   def destroy
     @completes = Complete.where(user_id: current_user.id)
     @complete = @completes.last
-    if @complete.destroy
-      redirect_to root_path
-    end
+    redirect_to root_path if @complete.destroy
   end
 
   private
@@ -42,10 +38,10 @@ class CompletesController < ApplicationController
   end
 
   def user_complete
-    if Complete.where(user_id: current_user.id) .present? && user_signed_in?
+    if Complete.where(user_id: current_user.id).present? && user_signed_in?
       @user_all_completes = Complete.where(user_id: current_user.id)
       @user_last_complete = @user_all_completes.last
-      @user_all_completes_order = @user_all_completes.order(id: "DESC")
+      @user_all_completes_order = @user_all_completes.order(id: 'DESC')
     end
   end
 end
